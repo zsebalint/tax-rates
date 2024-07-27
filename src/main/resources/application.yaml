@@ -1,0 +1,18 @@
+spring:
+  application.name: tax-rates
+  liquibase:
+    change-log: liquibase/changelog.yaml
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/compose-postgres
+    username: compose-postgres
+    password: compose-postgres
+  web:
+    resources:
+      add-mappings: false
+
+server:
+  port: 8080
+  servlet:
+    encoding:
+      force: true

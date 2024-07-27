@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: bz
+      changes:
+        - createTable:
+            tableName: tax_record
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: municipality
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: valid_from
+                  type: DATE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: valid_to
+                  type: DATE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: rate
+                  type: DOUBLE
+                  constraints:
+                    nullable: false
+        - addUniqueConstraint:
+            columnNames: municipality, valid_from, valid_to
+            constraintName: unique_tax_record
+            tableName: tax_record
+  - changeSet:
+      id: 2
+      author: bz
+      changes:
+        - createSequence:
+            sequenceName: tax_record_seq
+            startValue: 1
+            incrementBy: 50
